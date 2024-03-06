@@ -3,11 +3,14 @@ const app = express();
 const getEstimatedTime=require('./estimation');
 app.use(express.json());
 
-// Start the server
-const PORT = 2000;// process.env.PORT || 2000;
+// set PORT
+function getPORT() {
+  const PORT = parseInt(process.env.PORT, 10) || 2000;
+  return PORT;
+}
 
-const Server=app.listen(PORT, () => {
-  app.set('message', `Server running on port ${PORT}\n`);
+const Server=app.listen(getPORT(), () => {
+  app.set('message', `Server running on port ${getPORT()}\n`);
 });
 
 app.get('/estimate-charging-time', (req, res) => {
@@ -18,4 +21,4 @@ app.get('/estimate-charging-time', (req, res) => {
     res.status(200).json({estimatedTime: Number(estimatedTime)});
 });
 
-module.exports={app, Server, PORT};
+module.exports={app, Server, getPORT};
