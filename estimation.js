@@ -1,6 +1,7 @@
-function getChargingTime(power, batteryCapacity, soc) {
-  const estimatedTime = ((batteryCapacity * (1 - (soc / 100))) / power).toFixed(2);
-  return isNaN(estimatedTime)?-1:estimatedTime;
+function getChargingTime(powerInKW, batteryCapacityInKWh, socInPercentage) {
+  const estimatedTimeInHours =
+  ((batteryCapacityInKWh * (1 - (socInPercentage / 100))) / powerInKW).toFixed(2);
+  return isNaN(estimatedTimeInHours)?-1:estimatedTimeInHours;
 }
 
 module.exports=getChargingTime;
