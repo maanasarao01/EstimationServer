@@ -1,0 +1,14 @@
+node_modules
+.*
+**/Dockerfile*
+**/npm-debug.log
+**/obj
+**/test
+stryker.conf.json
+checkmycode.sh
+coverage
+reports
+gates
+LICENSE
+README.md
+**/.dockerignore
